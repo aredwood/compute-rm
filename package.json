@@ -1,0 +1,13 @@
+{
+  "name": "compute-timer",
+  "version": "0.1.0",
+  "description": "automatically stops compute instances according to tags",
+  "main": "./dist/index.js",
+  "author": "Alex Redwood <hello@alexredwood.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/compute": "^1.1.4",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.6.2"
+  }
+}
