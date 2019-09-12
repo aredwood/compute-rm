@@ -11,8 +11,8 @@ const check = async () => {
 
     // filter out all non-managed vms
     const taggedVMS = vms.filter((vm) => {
-        if(Object.keys(vm.tags).indexOf("zrm-enable") !== -1){
-            return vm.tags["zrm-enable"].toLowerCase() === "true";
+        if(Object.keys(vm.tags).indexOf("rm-enable") !== -1){
+            return vm.tags["rm-enable"].toLowerCase() === "true";
         }
         else{
             return false;
@@ -22,12 +22,12 @@ const check = async () => {
     // check assertions
     let assertOperations : Promise<boolean>[] = [];
     taggedVMS.forEach(vm => {
-        if(vm.status === VMStatus.STOPPED && vm.tags["zrm-assertstate"] === "RUNNING"){
+        if(vm.status === VMStatus.STOPPED && vm.tags["rm-assertstate"] === "RUNNING"){
             console.log(`${vm.name} has an assertion tag for it to start, starting this vm`);
             assertOperations.push(adaptor.startVM(vm));
         }
 
-        if(vm.status === VMStatus.RUNNING && vm.tags['zrm-assertstate'] === "STOPPED"){
+        if(vm.status === VMStatus.RUNNING && vm.tags['rm-assertstate'] === "STOPPED"){
             console.log(`${vm.name} has an assertion tag for it to be stopped, stopping this vm`);
             assertOperations.push(adaptor.stopVM(vm));
         }

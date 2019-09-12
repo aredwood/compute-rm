@@ -42,8 +42,8 @@ const gcp : IComputeAdaptor = {
 
             // normalize tags
             let tags = vm.metadata.labels || {};
-            if(tags['zrm-assertstate']){
-                tags['zrm-assertstate'] = mapStatus(tags['zrm-assertstate'])
+            if(tags['rm-assertstate']){
+                tags['rm-assertstate'] = mapStatus(tags['rm-assertstate'])
             }
 
             return {

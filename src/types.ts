@@ -8,10 +8,10 @@ export enum VMStatus{
 }
 
 export interface IVMTags{
-    "zrm-starttime":string,
-    "zrm-stoptime":string,
-    "zrm-enable":string,
-    "zrm-assertstate":VMStatus.RUNNING | VMStatus.STOPPED
+    "rm-starttime":string,
+    "rm-stoptime":string,
+    "rm-enable":string,
+    "rm-assertstate":VMStatus.RUNNING | VMStatus.STOPPED
 }
 
 export interface IVM{
