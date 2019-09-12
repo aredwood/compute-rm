@@ -37,16 +37,14 @@ const gcp : IComputeAdaptor = {
         const [vms] = await computeInstance.getVMs();
 
         const compliantVMs = vms.map((vm:any) => {
+            // normalize status
             const status = mapStatus(vm.metadata.status);
-
 
             // normalize tags
             let tags = vm.metadata.labels || {};
             if(tags['zrm-assertstate']){
                 tags['zrm-assertstate'] = mapStatus(tags['zrm-assertstate'])
             }
-
-
 
             return {
                 id:vm.metadata.id,
