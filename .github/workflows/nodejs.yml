@@ -20,5 +20,6 @@ jobs:
     - name: yarn things
       run: |
         yarn 
+        yarn run test
       env:
         CI: true
