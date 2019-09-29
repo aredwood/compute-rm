@@ -1,29 +1,29 @@
-// makes more sense for autocomplete
-export enum VMStatus{
-    STOPPING = "STOPPED",
-    STARTING = "STARTING",
-    RUNNING = "RUNNING",
-    STOPPED = "STOPPED",
-    ERROR = "ERROR"
+type IScheduleType = "TIME" | "POINTS";
+interface ISchedulePointSpecification{
+    points:number
 }
-
-export interface IVMTags{
-    "rm-starttime":string,
-    "rm-stoptime":string,
-    "rm-enable":string,
-    "rm-assertstate":VMStatus.RUNNING | VMStatus.STOPPED
+interface IScheduleTimeSpecification{
+    startTime:number,
+    endTime:number,
+    timeZone:number
 }
-
-export interface IVM{
-    id:string,
+interface IScheduleBase{
     name:string,
-    status:VMStatus,
-    tags:IVMTags,
-    metadata?:any
+    description:string
+    type:IScheduleType,
+    autoRestart:boolean
 }
+export interface ISchedulePoint extends IScheduleBase{
+    specification:ISchedulePointSpecification
+}
+export interface IScheduleTime extends IScheduleBase{
+    specification:IScheduleTimeSpecification
+}
+export type ISchedule = ISchedulePoint | IScheduleTime;
 
-export interface IComputeAdaptor{
-    getVMs() : Promise<IVM[]>,
-    stopVM(vm:IVM) : Promise<boolean>,
-    startVM(vm:IVM): Promise<boolean>
+export interface IResource{
+    type:"compute"
+    name:string,
+    schedule:string,
+    state:string,
 }

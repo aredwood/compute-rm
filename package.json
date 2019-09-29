@@ -1,13 +1,22 @@
 {
   "name": "compute-timer",
   "version": "0.1.0",
-  "description": "automatically stops compute instances according to tags",
   "main": "./dist/index.js",
+  "repository": "https://github.com/aredwood/compute-rm.git",
   "author": "Alex Redwood <hello@alexredwood.com>",
   "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
-    "@google-cloud/compute": "^1.1.4",
-    "tsc": "^1.20150623.0",
-    "typescript": "^3.6.2"
+    "@google-cloud/compute": "^1.1.5",
+    "@google-cloud/datastore": "^4.3.0",
+    "jest": "^24.9.0",
+    "typescript": "^3.6.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "ts-jest": "^24.1.0"
   }
 }
